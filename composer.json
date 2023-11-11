@@ -1,0 +1,22 @@
+{
+    "name": "task/vladlink",
+    "description": "functionality for storing/processing/outputting menu entries",
+    "autoload": {
+        "psr-4": {
+            "Task\\Vladlink\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mikhail",
+            "email": "miklsuhanov@gmail.com"
+        }
+    ],
+    "require": {
+        "docopt/docopt": "^1.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.7"
+    }
+}
