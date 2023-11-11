@@ -22,6 +22,4 @@ class Converter
         $data = file_get_contents($filePath);
         return json_decode($data, true);
     }
-
-
 }
