@@ -1,4 +1,3 @@
-# test-task-vladlink
 ### linter status:
 [![testLinter](https://github.com/Mikhail325/test-task-vladlink/actions/workflows/testLinter.yml/badge.svg)](https://github.com/Mikhail325/test-task-vladlink/actions/workflows/testLinter.yml)
 
