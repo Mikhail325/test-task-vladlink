@@ -29,9 +29,10 @@ Usage:
 Options:
   -h --help                     Show this screen
   -v --version                  Show version
-  -n --nested                   Specify the nesting limit
-  --nameFile                    Specify the file name to save
-  --Url                         Add URL to category
+  -n --nested                   Specify the nesting limit [default: null]
+  --fileJson                    Data import file
+  --nameFile                    Specify the file name to save [default: text.txt]
+  --Url                         Add URL to category [default: false]
 DOC;
 
 
