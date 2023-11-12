@@ -25,15 +25,14 @@ class Converter
         return json_decode($data, false);
     }
 
-    public function parse()
+    public function parser()
     {
         $parser = new Parser();
-        $parser->parse($this->data);
+        $parser->addDataParserInDB($this->data);
     }
 
-    public function export()
+    public function export($fileName, $neadUrl = true, $enclosure = null)
     {
-        $export = new Export();
-        $export->data();
+        Export::export($fileName, $neadUrl, $enclosure);
     }
 }
