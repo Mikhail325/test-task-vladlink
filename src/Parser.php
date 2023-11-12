@@ -2,6 +2,8 @@
 
 namespace Task\Vladlink;
 
+use Task\Vladlink\db\RepositoryDB;
+
 class Parser
 {
     private $db;
@@ -12,7 +14,7 @@ class Parser
         $this->db = new RepositoryDB();
     }
 
-    public function parse($childrens)
+    public function addDataParserInDB($childrens)
     {
         foreach ($childrens as $categore) {
             $this->db->setCategories($categore);
@@ -23,7 +25,7 @@ class Parser
 
             if (property_exists($categore, 'childrens')) {
                 array_push($this->parentId, $categore->{'id'});
-                $this->parse($categore->{'childrens'});
+                $this->addDataParserInDB($categore->{'childrens'});
             }
         }
         array_pop($this->parentId);
