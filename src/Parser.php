@@ -14,7 +14,7 @@ class Parser
         $this->db = new RepositoryDB();
     }
 
-    public function addDataParserInDB($childrens)
+    public function addDataParserInDB(mixed $childrens): void
     {
         foreach ($childrens as $categore) {
             $this->db->setCategories($categore);

@@ -9,12 +9,12 @@ class Converter
 {
     private $data;
 
-    public function __construct($filePath)
+    public function __construct(string $filePath)
     {
         $this->data = $this->parseData($filePath);
     }
 
-    private function parseData($file)
+    private function parseData(string $file): mixed
     {
         $filePath = realpath($file);
 
@@ -25,13 +25,13 @@ class Converter
         return json_decode($data, false);
     }
 
-    public function parser()
+    public function parser(): void
     {
         $parser = new Parser();
         $parser->addDataParserInDB($this->data);
     }
 
-    public function export($fileName, $neadUrl = true, $enclosure = null)
+    public function export(string $fileName, bool $neadUrl, mixed $enclosure): void
     {
         Export::export($fileName, $neadUrl, $enclosure);
     }

@@ -14,7 +14,7 @@ class RepositoryDB
         $this->pdo = Connection::connect();
     }
 
-    public function setCategories($category): void
+    public function setCategories(object $category): void
     {
         $sql = 'INSERT INTO categories (id, name, alias, created_at) VALUES (:id, :name, :alias, :created_at)';
         $sqlRequest = $this->pdo->prepare($sql);
@@ -26,7 +26,7 @@ class RepositoryDB
         ]);
     }
 
-    public function setParents($parentId, $childrensId): void
+    public function setParents(int $parentId, int $childrensId): void
     {
         $sql = 'INSERT 
             INTO parents (parent_id, childrens_id, created_at) 
@@ -39,7 +39,7 @@ class RepositoryDB
         ]);
     }
 
-    public function getCategories()
+    public function getCategories(): array
     {
         $sql = "SELECT * FROM categories;";
         $sqlRequest = $this->pdo->prepare($sql);
@@ -47,7 +47,7 @@ class RepositoryDB
         return $sqlRequest->fetchAll(\PDO::FETCH_CLASS);
     }
 
-    public function getCategore($id)
+    public function getCategore(int $id): mixed
     {
         $sql = "SELECT * FROM categories WHERE id = :id;";
         $sqlRequest = $this->pdo->prepare($sql);
@@ -57,7 +57,7 @@ class RepositoryDB
         return $sqlRequest->fetch(\PDO::FETCH_LAZY);
     }
 
-    public function getParentId($childrensId)
+    public function getParentId(int $childrensId): int
     {
         $sql = "SELECT parent_id FROM parents WHERE childrens_id = :childrens_id;";
         $sqlRequest = $this->pdo->prepare($sql);

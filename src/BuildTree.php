@@ -11,14 +11,14 @@ class BuildTree
     private $neadUrl;
     private $enclosure;
 
-    public function __construct($neadUrl, $enclosure)
+    public function __construct(bool $neadUrl, mixed $enclosure)
     {
         $this->neadUrl = $neadUrl;
         $this->enclosure = $enclosure;
         $this->db = new RepositoryDB();
     }
 
-    public function buildTree()
+    public function buildTree(): string
     {
         $result = '';
         $categories = $this->db->getCategories();
@@ -36,7 +36,7 @@ class BuildTree
         return $result;
     }
 
-    public function buildUrl($categore, $url = '')
+    public function buildUrl(mixed $categore, string $url = ''): string
     {
         $idChild = $categore->{'id'};
         $idParent = $this->db->getParentId($idChild);
