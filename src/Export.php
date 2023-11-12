@@ -2,42 +2,22 @@
 
 namespace Task\Vladlink;
 
+use Task\Vladlink\BuildTree;
+
 class Export
 {
-    private $db;
-    private $tab = "  ";
-
-    public function __construct()
+    
+    public static function export($fileName, $neadUrl, $enclosure)
     {
-        $this->db = new RepositoryDB();
-    }
-
-    public function data()///111111111111111111111111111111111111111111
-    {
-        $result = '';
-        $categories = $this->db->getCategories();
-        foreach ($categories as $categore) {
-            $name = $categore->{'name'};
-            $data = $this->export($categore);
-            $enclosure = substr_count($data, '/');
-            $data = str_repeat($this->tab, $enclosure) . $name . " $data";
-            $result .= $data;
+        $dir = 'result of work';
+        if (!is_dir($dir)) {
+            mkdir($dir);
         }
-        print_r($result);
-        return $result;
-    }
-
-    public function export($categore, $url = '')
-    {
-        $idChild = $categore->{'id'};
-        $idParent = $this->db->getParentId($idChild);
-        $url = '/' . $categore->{'alias'} . $url;
-
-        if ($idParent) {
-            $categore = $this->db->getCategore($idParent);
-            return $this->export($categore, $url);
-        }
-
-        return $url . "\n";
+        $fileName = $dir . '/' . $fileName;
+        $tree = new BuildTree($neadUrl, $enclosure);
+        $text = $tree->buildTree();
+        $file = fopen($fileName, 'w');
+        fwrite($file, $text);
+        fclose($file);
     }
 }
