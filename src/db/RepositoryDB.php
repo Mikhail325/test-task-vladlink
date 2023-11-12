@@ -1,8 +1,8 @@
 <?php
 
-namespace Task\Vladlink;
+namespace Task\Vladlink\db;
 
-use Task\Vladlink\Connection;
+use Task\Vladlink\db\Connection;
 use Carbon\Carbon;
 
 class RepositoryDB
