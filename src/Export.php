@@ -6,7 +6,6 @@ use Task\Vladlink\BuildTree;
 
 class Export
 {
-    
     public static function export($fileName, $neadUrl, $enclosure)
     {
         $dir = 'result of work';

@@ -31,7 +31,7 @@ class BuildTree
                 $url = $this->neadUrl ? " $data" : "\n";
                 $data = str_repeat($this->tab, $enclosure) . $name . $url ;
                 $result .= $data;
-            } 
+            }
         }
         return $result;
     }
@@ -41,7 +41,7 @@ class BuildTree
         $idChild = $categore->{'id'};
         $idParent = $this->db->getParentId($idChild);
         $url = '/' . $categore->{'alias'} . $url;
-       
+
         if ($idParent) {
             $categore = $this->db->getCategore($idParent);
             return $this->buildUrl($categore, $url);

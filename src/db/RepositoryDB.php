@@ -28,7 +28,9 @@ class RepositoryDB
 
     public function setParents($parentId, $childrensId): void
     {
-        $sql = 'INSERT INTO parents (parent_id, childrens_id, created_at) VALUES (:parent_id, :childrens_id, :created_at)';
+        $sql = 'INSERT 
+            INTO parents (parent_id, childrens_id, created_at) 
+            VALUES (:parent_id, :childrens_id, :created_at)';
         $sqlRequest = $this->pdo->prepare($sql);
         $sqlRequest->execute([
             'parent_id' => $parentId,
