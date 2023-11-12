@@ -1,8 +1,8 @@
 <?php
 
+use Task\Vladlink\Converter;
 use Task\Vladlink\Connection;
 use Task\Vladlink\Migration;
-use Task\Vladlink\Converter;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
@@ -36,4 +36,6 @@ Migration::migrate($pdo);
 // $diff = genDiff($args['<firstFile>'], $args['--format']);
 // print_r($diff);
 
-new Converter('categories.json');
+$parser = new Converter('categories.json');
+$parser->parse();
+$parser->export();
